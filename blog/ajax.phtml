@@ -1,0 +1,6 @@
+ <h3>Top 5 recent comment</h3>
+<?php foreach($comments as $comment): ?>
+
+            <p><i class="fa-solid fa-user"></i> <?= $comment["pseudo"]?></p>
+            <p><i class="fa-solid fa-comment-dots"></i> <?= $comment["content"]?></p>
+<?php endforeach; ?>

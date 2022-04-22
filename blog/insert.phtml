@@ -1,0 +1,62 @@
+<?php 
+
+ if(isset($_SESSION['Admins'])) :?>
+
+
+    <main>
+        <section>
+            <h3>Add an Article</h3>
+            <p><a href="./admin.php">Go back</a></p>
+            <form action="insert.php" method="post" enctype="multipart/form-data">
+               <fieldset>
+                   <legend>Your new Article</legend>
+                   <p>
+                       <label for="titre">Title : </label>
+                       <input type="text" name="titre"/>
+                   </p>
+                   <p>
+                        <label for="article">Article : </label>
+                       <input type="textarea" name="article" class="comment"/>
+                   </p>
+                   <p>
+                       <label for="images">Insert image</label>
+                       <input type="file" name="images">
+                   </p>
+                   <p>
+                        <label for="actor">Choose an Actor</label>
+                            <select name="actor" id="actor">
+                                 <?php foreach($actors as $value): ?>
+                                     <option value="<?= $value["id_Number"] ?>"><?= $value["first_Name"]." ".$value["last_Name"] ?></option>
+                                 <?php endforeach ;?>
+                            </select>
+                          
+                   </p>
+                    <p>
+                      <label for="category">Choose a Category</label>
+                            
+                            <select name="category" id="category">
+                                <?php foreach($categories as $value): ?>
+                                    <option value="<?=  $value["id_Number"]?>"><?= $value["category"] ?></option>
+                                <?php endforeach ;?>
+                            </select>
+                 
+                   </p>
+                    <p class="buttons">
+                       <input type="submit" name="add"/>
+                   </p>
+               </fieldset>
+            </form>
+            
+            
+        </section>
+    </main>
+
+
+<?php else: ?>
+
+    <?= header("location:login.php");  
+            exit(); ?>
+ 
+
+<?php endif; ?>
+

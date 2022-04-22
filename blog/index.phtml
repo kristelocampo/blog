@@ -1,0 +1,32 @@
+  <main>
+        <div>
+            <button onclick="myFunction()" class="dropbtn">Article List</button>
+                  
+                <div id="myDropdown" class="dropdown-content">
+                   <?php foreach($articles as $article): ?>    
+                  <li><a  href="article.php?id_article=<?= $article["id_Number"]?>"> <?= $article["title"]?></a></li>
+                    <?php endforeach; ?>
+                  </div>
+              
+        </div>
+
+        <input type="text" name="search_text" id="search_text" placeholder="search">
+        <div id="search">
+                
+        </div>
+
+        <section>
+          
+            <?php foreach($articles as $article): ?>
+                <h3 class="title_article"><a href="article.php?id_article=<?= $article["id_Number"]?>"><i class="fa-regular fa-hand-point-right"> <?= $article["title"]?></i></a></h3>
+                <p class="content_article"><?= substr($article["content"], 0, 100) ?> </p> 
+                <a href="article.php?id_article=<?= $article["id_Number"]?>">lire la suite <i class="fa-solid fa-angles-right"></i></a>
+                <p>Redigé par <span class="name"><?= $article["first_Name"]." ".$article["last_Name"]." ".$article["date"]?></span></p>
+    
+            <?php endforeach; ?>
+        </section>
+        <aside id="comment">
+            
+        </aside>
+        <script type="text/javascript" src="script.js"></script>
+    </main>

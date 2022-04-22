@@ -1,0 +1,41 @@
+<?php 
+
+ if(isset($_SESSION['Admins'])) :?>
+
+    <main>
+        <h2>Welcome <?=  $_SESSION['Admins']?> <i class="far fa-smile"></i></h2>
+    
+        <section>
+            <h4><a href="insert.php">Create new article</a></h4>
+            <p><a href="logout.php">Log-out</a></p>
+            <table>
+                <tr>
+                    <th>Title</th>
+                    <th>Article</th>
+                    <th>Actor</th>
+                    <th>Category</th>
+                    <th>Image</th>
+                </tr>
+                <?php foreach($all as $value): ?>
+                <tr>
+                    <td><?= $value["title"] ?></td>
+                    <td><?= substr($value["content"], 0, 10) ?></td>
+                    <td><?= $value["first_Name"]." ".$value["last_Name"]  ?></td>
+                    <td><?= $value["category"] ?></td>
+                    <td><img src="./uploads/<?= $value["image"]?>" alt="<?= $value["title"]?>"></img></td>
+                    <td><a href="update.php?updateId=<?= $value["id_Number"]?>"><i class="fa-solid fa-pen-nib"></i></a></td>
+                    <td><a href="delete.php?deleteId=<?= $value["id_Number"]?>"><i class="fa-solid fa-eraser"></i></a></td>
+                </tr>
+                <?php endforeach; ?>
+            </table>
+        </section>
+    
+    </main>
+<?php else: ?>
+
+    <?= header("location:login.php");  
+            exit(); ?>
+ 
+
+<?php endif; ?>
+

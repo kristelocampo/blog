@@ -1,0 +1,39 @@
+<main>
+    <h1><i class="fa-solid fa-memo"></i>Article</h1>
+    <section class="section-article">
+        <h3><?= $details_articles["title"]?></h3>
+        <img src="./uploads/<?= $details_articles["image"]?>" alt="<?= $details_articles["title"]?>" class="article-img"></img>
+        <p><?= $details_articles["content"]?></p>
+        <p>Rediriger par <span class="name"><?= $details_articles["first_Name"]." ".$details_articles["last_Name"]." ".$details_articles["date"]?></span></p>
+    </section>
+    <hr>
+    <section>
+        <h3>Comments</h3>
+
+            <?php foreach($comments as $comment): ?>
+            <p><i class="fa-solid fa-user"></i> <?= $comment["pseudo"]?></p>
+            <p><i class="fa-solid fa-comment-dots"></i> <?= $comment["content"]?></p>
+        <?php endforeach; ?>
+
+        
+    </section>
+    <form action="add_comment.php" method="post" enctype="multipart/form-data">
+       <fieldset>
+           <legend><i class="fa-solid fa-comment"></i>New Comment</legend>
+           <p>
+               <input type="hidden" name="id_article" value="<?= $id_article ?>"/>
+               <label for="pseudo" class="c">Pseudo : </label>
+               <input type="text" name="pseudo" class="user"/>
+           </p>
+           <p>
+               <label for="content" class="c">Comment : </label>
+               <input type="textarea" name="content"  class="comment"/>
+           </p>
+ 
+           <p class="buttons">
+               <input type="submit" name="Add" value="Add" class="add"/>
+               <!--<input type="submit" name="Cancel" value="Cancel" class="cancel"/>-->
+           </p>
+       </fieldset>
+    </form>
+</main>
